@@ -1,0 +1,38 @@
+# Hyprland Configuration
+# https://wiki.hypr.land/Configuring/
+
+# ==================
+# MONITOR CONFIG
+# ==================
+ monitor = eDP-1, 1920x1080@60, 0x0, 1.2
+
+# ==================
+# ENVIRONMENT VARS
+# ==================
+env = QT_QPA_PLATFORM,wayland
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+env = QT_QPA_PLATFORMTHEME,gtk3
+env = QT_QPA_PLATFORMTHEME_QT6,gtk3
+env = TERMINAL,kitty
+env = GLFW_IM_MODULE, ibus
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# ==================
+# STARTUP APPS
+# ==================
+exec-once = bash -c "wl-paste --watch cliphist store &"
+exec-once = quickshell -p ~/.config/quickshell/dms
+exec-once = /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec-once = kdeconnectd
+exec-once = kdeconnect-indicator
+exec-once = ibus start --type wayland
+
+
+
+# ==================
+# SOURCES
+# ==================
+source= hyprland/colors.conf
+source= hyprland/rules.conf
+source= hyprland/keybind.conf
+source= hyprland/general.conf
+# source= rules2.conf
